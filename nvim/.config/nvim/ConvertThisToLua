@@ -1,0 +1,157 @@
+set ignorecase
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+set scrolloff=10
+set number
+set relativenumber
+set showcmd
+set showmatch
+set ruler
+set smarttab
+set softtabstop=0 noexpandtab
+set shiftwidth=4
+set tabstop=4
+syntax on
+set termguicolors
+
+so ~/.vim/colors/github.vim
+
+" Colors
+colorscheme ron
+if &diff
+   colorscheme github
+"   colorscheme molokai
+ "   colorscheme onedark
+endif
+
+" Relative lines
+if version >= 703
+	set rnu
+	nnoremap <leader>rl :set rnu!<CR>
+endif
+
+" Keymap
+let mapleader = " "
+inoremap <nowait> jk <ESC>
+
+"Easy tab indent
+vnoremap < <gv
+vnoremap > >gv
+
+"Nicer Join
+nnoremap J :m .zJ`z
+
+"Open Ex
+nnoremap <leader>p :Ex<CR>
+
+"Move with contol
+vnoremap <c-j> :m '>+1<CR>gv=gv
+nnoremap <c-j> :m .+1<CR>==
+nnoremap <c-k> :m .-2<CR>==
+vnoremap <c-k> :m '<-2<CR>gv=gv
+
+"Center screen stuff
+nnoremap J mzJ`z
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+"Delete without yanking
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
+
+" Replace currently selected text with default register
+" without yanking it
+vnoremap <leader>p "_dP
+
+" buffer stuff
+nnoremap <leader>b :buffers<CR>:buffer<Space>
+nnoremap <C-h> :bp<CR>
+nnoremap <C-l> :bn<CR>
+set smartcase
+set incsearch
+set hlsearch
+set scrolloff=10
+set number
+set relativenumber
+set showcmd
+set showmatch
+set ruler
+set smarttab
+set shiftwidth=4
+set tabstop=4
+set hidden
+syntax on
+set clipboard^=unnamed,unnamedplus
+set termguicolors
+
+
+so ~/.vim/colors/github.vim
+
+" Colors
+colorscheme desert
+if &diff
+   colorscheme github
+"   colorscheme molokai
+" "   colorscheme onedark
+endif
+
+" Relative lines
+if version >= 703
+	set rnu
+	nnoremap <leader>rl :set rnu!<CR>
+endif
+
+" Keymap
+let mapleader = " "
+inoremap <nowait> jk <ESC>
+
+"Easy tab indent
+vnoremap < <gv
+vnoremap > >gv
+
+"Nicer Join
+nnoremap J :m .zJ`z
+
+"Open Ex
+nnoremap <leader>p :Ex<CR>
+
+"Move with contol
+vnoremap <c-j> :m '>+1<CR>gv=gv
+nnoremap <c-j> :m .+1<CR>==
+nnoremap <c-k> :m .-2<CR>==
+vnoremap <c-k> :m '<-2<CR>gv=gv
+
+"Center screen stuff
+nnoremap J mzJ`z
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+"Delete without yanking
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
+
+" Replace currently selected text with default register
+" without yanking it
+vnoremap <leader>p "_dP
+
+" buffer stuff
+nnoremap <leader>b :buffers<CR>:buffer<Space>
+nnoremap <C-h> :bp<CR>
+nnoremap <C-l> :bn<CR>
+
+" Macro
+nnoremap <leader>. @@
+nnoremap Q @q
+
+" STATUS LINE ------------------------------------------------------------ {{{
+set statusline=
+set statusline+=\ %F\ %M\ %Y\ %R
+set statusline+=%=
+set statusline+=\ ascii:\ %b\ hex:\ 0x%B\ row:\ %l\ col:\ %c\ percent:\ %p%%
+set laststatus=2
