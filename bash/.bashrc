@@ -14,3 +14,5 @@ fi
 
 alias cq-editor='(cd $HOME/cq-editor/ && ./run.sh)'
 alias ..='cd ..'
+alias nixrb='sudo nixos-rebuild switch'
+alias nixc='vim ~/nixos-config/configuration.nix'
