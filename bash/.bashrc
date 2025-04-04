@@ -10,9 +10,7 @@ if ! [ "$?" == 0 ]; then
      ssh-add -t 1d
 fi
 
-. $HOME/.cargo/env
-
 alias cq-editor='(cd $HOME/cq-editor/ && ./run.sh)'
 alias ..='cd ..'
 alias nixrb='sudo nixos-rebuild switch'
-alias nixc='vim ~/nixos-config/configuration.nix'
+alias nixc='vim ~/nixos-config/hosts/station/configuration.nix'
