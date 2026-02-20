@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+# Wait a moment to ensure PipeWire has started and nodes are available
+sleep 2
+
+echo "[pw-link] Linking Line 1 → Line 2..."
+
+# Link Front Left
+pw-link \
+  "alsa_output.usb-BEHRINGER_UMC204HD_192k-00.HiFi__Line1__sink:monitor_FL" \
+  "alsa_output.usb-BEHRINGER_UMC204HD_192k-00.HiFi__Line2__sink:playback_FL"
+
+# Link Front Right
+pw-link \
+  "alsa_output.usb-BEHRINGER_UMC204HD_192k-00.HiFi__Line1__sink:monitor_FR" \
+  "alsa_output.usb-BEHRINGER_UMC204HD_192k-00.HiFi__Line2__sink:playback_FR"
+
+echo "[pw-link] Done!"
+

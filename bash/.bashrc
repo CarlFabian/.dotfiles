@@ -14,3 +14,7 @@ alias cq-editor='(cd $HOME/cq-editor/ && ./run.sh)'
 alias ..='cd ..'
 alias nixrb='sudo nixos-rebuild switch'
 alias nixc='vim ~/nixos-config/hosts/station/configuration.nix'
+
+alias slippi='~/.local/share/Slippi-Launcher-2.11.10-x86_64.AppImage&'
+
+alias vim='nvim'

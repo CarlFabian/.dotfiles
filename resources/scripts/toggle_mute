@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+DEVICE_ID=60
+STATE=$(wpctl get-volume $DEVICE_ID | awk '{print $3}')
+
+if [[ "$STATE" == "[MUTED]" ]]; then
+    wpctl set-mute $DEVICE_ID 0
+    notify-send -i microphone-sensitivity-high-symbolic "Microphone On"
+else
+    wpctl set-mute $DEVICE_ID 1
+    notify-send -i microphone-sensitivity-muted-symbolic "Microphone Muted"
+fi
+

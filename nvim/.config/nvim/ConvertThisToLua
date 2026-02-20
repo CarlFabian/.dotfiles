@@ -1,157 +1,80 @@
-set ignorecase
-set ignorecase
-set smartcase
-set incsearch
-set hlsearch
-set scrolloff=10
-set number
-set relativenumber
-set showcmd
-set showmatch
-set ruler
-set smarttab
-set softtabstop=0 noexpandtab
-set shiftwidth=4
-set tabstop=4
-syntax on
-set termguicolors
+-- Basic Options
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.incsearch = true
+vim.opt.hlsearch = true
+vim.opt.scrolloff = 10
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.showcmd = true
+vim.opt.showmatch = true
+vim.opt.ruler = true
+vim.opt.smarttab = true
+vim.opt.softtabstop = 0
+vim.opt.expandtab = false
+vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
+vim.opt.hidden = true
+vim.opt.termguicolors = true
+vim.opt.clipboard:append({ "unnamed", "unnamedplus" })
 
-so ~/.vim/colors/github.vim
+-- Syntax Highlighting (normally on by default in Lua)
+vim.cmd("syntax on")
 
-" Colors
-colorscheme ron
-if &diff
-   colorscheme github
-"   colorscheme molokai
- "   colorscheme onedark
-endif
+-- Leader Key
+vim.g.mapleader = " "
 
-" Relative lines
-if version >= 703
-	set rnu
-	nnoremap <leader>rl :set rnu!<CR>
-endif
+-- Keymaps
+local keymap = vim.keymap.set
+local opts = { noremap = true, silent = true }
 
-" Keymap
-let mapleader = " "
-inoremap <nowait> jk <ESC>
+-- Insert mode: jk to escape
+keymap("i", "jk", "<Esc>", { noremap = true, nowait = true })
 
-"Easy tab indent
-vnoremap < <gv
-vnoremap > >gv
+-- Visual mode: Easy tab indent
+keymap("v", "<", "<gv", opts)
+keymap("v", ">", ">gv", opts)
 
-"Nicer Join
-nnoremap J :m .zJ`z
+-- Nicer join with cursor restore
+keymap("n", "J", "mzJ`z", opts)
 
-"Open Ex
-nnoremap <leader>p :Ex<CR>
+-- Ex mode (file explorer)
+keymap("n", "<leader>p", ":Ex<CR>", opts)
 
-"Move with contol
-vnoremap <c-j> :m '>+1<CR>gv=gv
-nnoremap <c-j> :m .+1<CR>==
-nnoremap <c-k> :m .-2<CR>==
-vnoremap <c-k> :m '<-2<CR>gv=gv
+-- Move lines (control + j/k)
+keymap("v", "<C-j>", ":m '>+1<CR>gv=gv", opts)
+keymap("n", "<C-j>", ":m .+1<CR>==", opts)
+keymap("n", "<C-k>", ":m .-2<CR>==", opts)
+keymap("v", "<C-k>", ":m '<-2<CR>gv=gv", opts)
 
-"Center screen stuff
-nnoremap J mzJ`z
-nnoremap <C-d> <C-d>zz
-nnoremap <C-u> <C-u>zz
-nnoremap n nzzzv
-nnoremap N Nzzzv
+-- Center screen on movement
+keymap("n", "<C-d>", "<C-d>zz", opts)
+keymap("n", "<C-u>", "<C-u>zz", opts)
+keymap("n", "n", "nzzzv", opts)
+keymap("n", "N", "Nzzzv", opts)
 
-"Delete without yanking
-nnoremap <leader>d "_d
-vnoremap <leader>d "_d
+-- Toggle relative line numbers
+keymap("n", "<leader>rl", ":set rnu!<CR>", opts)
 
-" Replace currently selected text with default register
-" without yanking it
-vnoremap <leader>p "_dP
+-- Delete without yanking
+keymap("n", "<leader>d", "\"_d", opts)
+keymap("v", "<leader>d", "\"_d", opts)
 
-" buffer stuff
-nnoremap <leader>b :buffers<CR>:buffer<Space>
-nnoremap <C-h> :bp<CR>
-nnoremap <C-l> :bn<CR>
-set smartcase
-set incsearch
-set hlsearch
-set scrolloff=10
-set number
-set relativenumber
-set showcmd
-set showmatch
-set ruler
-set smarttab
-set shiftwidth=4
-set tabstop=4
-set hidden
-syntax on
-set clipboard^=unnamed,unnamedplus
-set termguicolors
+-- Replace selection without yanking
+keymap("v", "<leader>p", "\"_dP", opts)
 
+-- Buffer navigation
+keymap("n", "<leader>b", ":buffers<CR>:buffer ", { noremap = true })
+keymap("n", "<C-h>", ":bp<CR>", opts)
+keymap("n", "<C-l>", ":bn<CR>", opts)
 
-so ~/.vim/colors/github.vim
+-- Macro mappings
+keymap("n", "<leader>.", "@@", opts)
+keymap("n", "Q", "@q", opts)
 
-" Colors
-colorscheme desert
-if &diff
-   colorscheme github
-"   colorscheme molokai
-" "   colorscheme onedark
-endif
-
-" Relative lines
-if version >= 703
-	set rnu
-	nnoremap <leader>rl :set rnu!<CR>
-endif
-
-" Keymap
-let mapleader = " "
-inoremap <nowait> jk <ESC>
-
-"Easy tab indent
-vnoremap < <gv
-vnoremap > >gv
-
-"Nicer Join
-nnoremap J :m .zJ`z
-
-"Open Ex
-nnoremap <leader>p :Ex<CR>
-
-"Move with contol
-vnoremap <c-j> :m '>+1<CR>gv=gv
-nnoremap <c-j> :m .+1<CR>==
-nnoremap <c-k> :m .-2<CR>==
-vnoremap <c-k> :m '<-2<CR>gv=gv
-
-"Center screen stuff
-nnoremap J mzJ`z
-nnoremap <C-d> <C-d>zz
-nnoremap <C-u> <C-u>zz
-nnoremap n nzzzv
-nnoremap N Nzzzv
-
-"Delete without yanking
-nnoremap <leader>d "_d
-vnoremap <leader>d "_d
-
-" Replace currently selected text with default register
-" without yanking it
-vnoremap <leader>p "_dP
-
-" buffer stuff
-nnoremap <leader>b :buffers<CR>:buffer<Space>
-nnoremap <C-h> :bp<CR>
-nnoremap <C-l> :bn<CR>
-
-" Macro
-nnoremap <leader>. @@
-nnoremap Q @q
-
-" STATUS LINE ------------------------------------------------------------ {{{
-set statusline=
-set statusline+=\ %F\ %M\ %Y\ %R
-set statusline+=%=
-set statusline+=\ ascii:\ %b\ hex:\ 0x%B\ row:\ %l\ col:\ %c\ percent:\ %p%%
-set laststatus=2
+-- Custom statusline
+vim.opt.statusline = ""
+vim.opt.statusline:append(" %F %M %Y %R")
+vim.opt.statusline:append("%=")
+vim.opt.statusline:append(" ascii: %b hex: 0x%B row: %l col: %c percent: %p%%")
+vim.opt.laststatus = 2
